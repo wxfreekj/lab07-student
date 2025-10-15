@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 7: Air Masses and Fronts</title>
+    <link href="./shared/styles/common.css" rel="stylesheet" />
+    <link href="./shared/styles/lab-styles.css" rel="stylesheet" />
+    <link href="./shared/styles/canvas-tools.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      class="progress-indicator"
+      style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        padding: 8px 0;
+      "
+    >
+      <div
+        class="progress-bar"
+        style="width: 100%; height: 8px; background: #e0e0e0; overflow: hidden"
+      >
+        <div
+          class="progress-fill"
+          id="progressBar"
+          style="
+            height: 8px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+            display: block;
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <h1>🌡️ Lab 7: Air Masses and Fronts</h1>
+        <p>Surface Weather Analysis (30 Points)</p>
+      </div>
+
+      <div class="content">
+        <!-- Introduction Section -->
+        <div class="section">
+          <h2>📚 Introduction</h2>
+          <div class="intro-box">
+            <p>
+              An <strong>air mass</strong> is a large body of air that has
+              similar temperature and moisture characteristics throughout. Air
+              masses form when air stagnates over a region for an extended
+              period, taking on the temperature and moisture properties of the
+              surface below.
+            </p>
+
+            <p>
+              A <strong>front</strong> is a boundary between two air masses with
+              different temperature and moisture characteristics. Understanding
+              fronts is crucial for weather forecasting, as they often bring
+              significant weather changes including precipitation, wind shifts,
+              and temperature changes.
+            </p>
+
+            <p>
+              In this lab, you will learn to identify different types of air
+              masses, analyze surface weather maps, draw isobars, and identify
+              frontal boundaries.
+            </p>
+          </div>
+        </div>
+
+        <!-- Question 1: Air Mass Identification from Map -->
+        <div class="section">
+          <h2>Section 1: Air Mass Identification</h2>
+
+          <p>
+            <strong>Instructions:</strong> Examine the air mass source regions
+            on the map and identify the air mass type for each labeled location.
+          </p>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              gap: 20px;
+              align-items: start;
+            "
+          >
+            <div class="intro-box">
+              <p>Air masses are classified based on their source region:</p>
+              <ul>
+                <li><strong>Continental (c):</strong> Forms over land - dry</li>
+                <li><strong>Maritime (m):</strong> Forms over water - moist</li>
+                <li>
+                  <strong>Polar (P):</strong> Forms in high latitudes - cold
+                </li>
+                <li>
+                  <strong>Tropical (T):</strong> Forms in low latitudes - warm
+                </li>
+                <li>
+                  <strong>Arctic (A):</strong> Forms in Arctic regions - very
+                  cold
+                </li>
+              </ul>
+              <p><strong>Common air mass types:</strong></p>
+              <ul>
+                <li><strong>cP</strong> - Continental Polar (cold, dry)</li>
+                <li><strong>cT</strong> - Continental Tropical (hot, dry)</li>
+                <li><strong>mP</strong> - Maritime Polar (cool, moist)</li>
+                <li><strong>mT</strong> - Maritime Tropical (warm, moist)</li>
+                <li>
+                  <strong>cA</strong> - Continental Arctic (very cold, dry)
+                </li>
+              </ul>
+            </div>
+
+            <div class="diagram-container">
+              <img src="airmasses.png" alt="Air Mass Source Regions" />
+              <p class="image-caption">
+                Figure 1: Air Mass Source Regions over North America (locations
+                labeled A-G)
+              </p>
+            </div>
+          </div>
+
+          <h3>Question 1: Air Mass Type Classification (7 pts)</h3>
+          <p>
+            Identify the air mass type for each location labeled A through G in
+            Figure 1 above.
+          </p>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(7, 1fr);
+              gap: 8px;
+              margin-top: 10px;
+            "
+          >
+            <div style="margin: 0">
+              <label
+                class="question-label"
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  font-weight: bold;
+                  margin-bottom: 3px;
+                  display: block;
+                "
+                >A</label
+              >
+              <select
+                id="q1a"
+                class="form-select"
+                style="padding: 4px; font-size: 0.85em"
+              >
+                <option value="">Select...</option>
+                <option value="cP">cP</option>
+                <option value="cT">cT</option>
+                <option value="mP">mP</option>
+                <option value="mT">mT</option>
+                <option value="cA">cA</option>
+              </select>
+            </div>
+
+            <div style="margin: 0">
+              <label
+                class="question-label"
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  font-weight: bold;
+                  margin-bottom: 3px;
+                  display: block;
+                "
+                >B</label
+              >
+              <select
+                id="q1b"
+                class="form-select"
+                style="padding: 4px; font-size: 0.85em"
+              >
+                <option value="">Select...</option>
+                <option value="cP">cP</option>
+                <option value="cT">cT</option>
+                <option value="mP">mP</option>
+                <option value="mT">mT</option>
+                <option value="cA">cA</option>
+              </select>
+            </div>
+
+            <div style="margin: 0">
+              <label
+                class="question-label"
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  font-weight: bold;
+                  margin-bottom: 3px;
+                  display: block;
+                "
+                >C</label
+              >
+              <select
+                id="q1c"
+                class="form-select"
+                style="padding: 4px; font-size: 0.85em"
+              >
+                <option value="">Select...</option>
+                <option value="cP">cP</option>
+                <option value="cT">cT</option>
+                <option value="mP">mP</option>
+                <option value="mT">mT</option>
+                <option value="cA">cA</option>
+              </select>
+            </div>
+
+            <div style="margin: 0">
+              <label
+                class="question-label"
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  font-weight: bold;
+                  margin-bottom: 3px;
+                  display: block;
+                "
+                >D</label
+              >
+              <select
+                id="q1d"
+                class="form-select"
+                style="padding: 4px; font-size: 0.85em"
+              >
+                <option value="">Select...</option>
+                <option value="cP">cP</option>
+                <option value="cT">cT</option>
+                <option value="mP">mP</option>
+                <option value="mT">mT</option>
+                <option value="cA">cA</option>
+              </select>
+            </div>
+
+            <div style="margin: 0">
+              <label
+                class="question-label"
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  font-weight: bold;
+                  margin-bottom: 3px;
+                  display: block;
+                "
+                >E</label
+              >
+              <select
+                id="q1e"
+                class="form-select"
+                style="padding: 4px; font-size: 0.85em"
+              >
+                <option value="">Select...</option>
+                <option value="cP">cP</option>
+                <option value="cT">cT</option>
+                <option value="mP">mP</option>
+                <option value="mT">mT</option>
+                <option value="cA">cA</option>
+              </select>
+            </div>
+
+            <div style="margin: 0">
+              <label
+                class="question-label"
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  font-weight: bold;
+                  margin-bottom: 3px;
+                  display: block;
+                "
+                >F</label
+              >
+              <select
+                id="q1f"
+                class="form-select"
+                style="padding: 4px; font-size: 0.85em"
+              >
+                <option value="">Select...</option>
+                <option value="cP">cP</option>
+                <option value="cT">cT</option>
+                <option value="mP">mP</option>
+                <option value="mT">mT</option>
+                <option value="cA">cA</option>
+              </select>
+            </div>
+
+            <div style="margin: 0">
+              <label
+                class="question-label"
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  font-weight: bold;
+                  margin-bottom: 3px;
+                  display: block;
+                "
+                >G</label
+              >
+              <select
+                id="q1g"
+                class="form-select"
+                style="padding: 4px; font-size: 0.85em"
+              >
+                <option value="">Select...</option>
+                <option value="cP">cP</option>
+                <option value="cT">cT</option>
+                <option value="mP">mP</option>
+                <option value="mT">mT</option>
+                <option value="cA">cA</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 2: Front Types -->
+        <div class="section">
+          <h2>Section 2: Understanding Fronts</h2>
+          <p>
+            <strong>Instructions:</strong> Examine the different front types and
+            answer the following questions about their characteristics.
+          </p>
+
+          <div class="intro-box">
+            <h3>Types of Fronts:</h3>
+            <ul>
+              <li>
+                <strong>Cold Front:</strong> Cold air advances and replaces warm
+                air. Steep slope, often brings thunderstorms and rapid
+                temperature drops.
+              </li>
+              <li>
+                <strong>Warm Front:</strong> Warm air advances and rises over
+                cold air. Gentle slope, often brings steady precipitation and
+                gradual warming.
+              </li>
+              <li>
+                <strong>Stationary Front:</strong> Neither air mass is
+                advancing. Can bring extended periods of clouds and
+                precipitation.
+              </li>
+              <li>
+                <strong>Occluded Front:</strong> Cold front overtakes a warm
+                front. Complex weather patterns.
+              </li>
+            </ul>
+          </div>
+
+          <div class="diagram-container">
+            <img src="fronts.png" alt="Types of Fronts" />
+            <p class="image-caption">
+              Figure 2: Cross-sections of Different Front Types
+            </p>
+          </div>
+
+          <h3>Question 2a: Front Precipitation Patterns (2 pts)</h3>
+          <div class="form-group">
+            <label for="q2a"
+              >Which type of front typically brings the most intense,
+              short-lived precipitation?</label
+            >
+            <select id="q2a" class="form-select">
+              <option value="">Select...</option>
+              <option value="cold">Cold Front</option>
+              <option value="warm">Warm Front</option>
+              <option value="stationary">Stationary Front</option>
+              <option value="occluded">Occluded Front</option>
+            </select>
+          </div>
+
+          <h3>Question 2b: Steady Precipitation (2 pts)</h3>
+          <div class="form-group">
+            <label for="q2b"
+              >Which type of front is associated with long periods of steady,
+              light rain?</label
+            >
+            <select id="q2b" class="form-select">
+              <option value="">Select...</option>
+              <option value="cold">Cold Front</option>
+              <option value="warm">Warm Front</option>
+              <option value="stationary">Stationary Front</option>
+              <option value="occluded">Occluded Front</option>
+            </select>
+          </div>
+
+          <h3>Question 2c: Wind Direction Shift (2 pts)</h3>
+          <div class="form-group">
+            <label for="q2c"
+              >After a cold front passes, which direction does the wind
+              typically shift?</label
+            >
+            <select id="q2c" class="form-select">
+              <option value="">Select...</option>
+              <option value="sw-nw">From southwest to northwest</option>
+              <option value="nw-sw">From northwest to southwest</option>
+              <option value="se-ne">From southeast to northeast</option>
+              <option value="ne-se">From northeast to southeast</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Question 3: Surface Analysis -->
+        <div class="section">
+          <h2>Section 3: Surface Weather Analysis</h2>
+
+          <p>
+            <strong>Instructions:</strong> Complete the surface analysis on the
+            map by drawing isobars and fronts based on the station data.
+          </p>
+
+          <div class="intro-box">
+            <p>
+              Surface weather analysis involves drawing isobars (lines of
+              constant pressure) and identifying frontal boundaries on weather
+              maps. This helps meteorologists identify:
+            </p>
+            <ul>
+              <li>Areas of high and low pressure</li>
+              <li>Wind patterns (winds blow parallel to isobars)</li>
+              <li>Frontal positions and movement</li>
+              <li>Areas of potential severe weather</li>
+            </ul>
+
+            <h3>Isobar Drawing Guidelines:</h3>
+            <ul>
+              <li>
+                Draw isobars at 4 mb intervals (996, 1000, 1004, 1008, etc.)
+              </li>
+              <li>Isobars should be smooth curves</li>
+              <li>Isobars never cross each other</li>
+              <li>Isobars form closed loops around highs and lows</li>
+            </ul>
+
+            <h3>Front Identification:</h3>
+            <ul>
+              <li>Look for temperature gradients (temperature changes)</li>
+              <li>Look for wind shifts (change in wind direction)</li>
+              <li>Look for dew point changes (moisture changes)</li>
+              <li>
+                Fronts often align with pressure troughs (elongated low
+                pressure)
+              </li>
+            </ul>
+          </div>
+
+          <h3>Question 3: Surface Analysis Drawing (18 pts)</h3>
+          <div class="intro-box">
+            <p>
+              <strong>Instructions:</strong> Complete the surface analysis on
+              the map below by drawing:
+            </p>
+            <ul>
+              <li>
+                Three isobars: 1000 mb, 1004 mb, and 1008 mb (use green,
+                magenta, and cyan lines)
+              </li>
+              <li>One cold front (use blue line)</li>
+              <li>One warm front (use red line)</li>
+              <li>One region of broken & overcast clouds (use orange line)</li>
+            </ul>
+            <p style="color: #666; margin-top: 10px">
+              <strong>How to use:</strong> Use the dropdown to select which
+              feature you want to draw, then click on the map to add points.
+              Drag points to adjust, right-click to delete. Switch between
+              different features as needed. For the cloud region, draw a closed
+              curve around the area.
+            </p>
+          </div>
+
+          <div class="curve-widget-wrapper">
+            <div class="stage">
+              <img
+                id="bg-img-analysis"
+                src="surface_analysis_blank.png"
+                alt="Surface analysis map"
+              />
+              <canvas id="draw-canvas-analysis"></canvas>
+            </div>
+            <p class="hint">
+              <strong>Instructions:</strong> Select a feature from the dropdown,
+              then click to add points along that feature. Draw smooth curves
+              for isobars and fronts. Use the station data to guide your
+              analysis.
+            </p>
+            <div class="controls">
+              <label for="line-select-analysis">Draw Feature:</label>
+              <select id="line-select-analysis">
+                <option value="0" selected>1000 mb Isobar</option>
+                <option value="1">1004 mb Isobar</option>
+                <option value="2">1008 mb Isobar</option>
+                <option value="3">Cold Front</option>
+                <option value="4">Warm Front</option>
+                <option value="5">Broken & Overcast Clouds</option>
+              </select>
+              <button id="undo-last-btn-analysis" class="btn">Undo Last</button>
+              <button id="undo-all-btn-analysis" class="btn">
+                Clear Current Feature
+              </button>
+              <button id="save-btn-analysis" class="btn-save">
+                Save Analysis
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Export Section -->
+        <div class="button-container">
+          <button class="btn-export" onclick="exportAnswers()">
+            📥 Export Answers for Canvas
+          </button>
+          <button class="btn-clear" onclick="clearForm()">
+            🗑️ Clear All Answers
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="module" src="lab07-main.js"></script>
+  </body>
+</html>

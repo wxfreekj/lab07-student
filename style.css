@@ -1,0 +1,265 @@
+/* General Body and Container Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.content {
+    padding: 10px 0;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #2c3e50;
+    font-size: 2em;
+}
+
+/* Sections and Questions */
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    color: #34495e;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+.section h3 {
+    color: #34495e;
+    border-left: 3px solid #3498db;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.question {
+    background: #f8f9fa;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-left: 4px solid #3498db;
+}
+
+.question-label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.question-points {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    font-weight: normal;
+}
+
+/* Forms and Inputs */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box; /* Important for consistent sizing */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.25);
+}
+
+.input-group {
+    margin-top: 10px;
+}
+.input-group label {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Tables */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+}
+td input {
+    width: 100%;
+}
+
+/* Images and Diagrams */
+.diagram-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.diagram-container img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.image-caption {
+    font-style: italic;
+    color: #7f8c8d;
+    margin-top: 8px;
+    font-size: 0.9em;
+}
+
+/* Info Box */
+.intro-box, .info-box {
+    background: #eaf5ff;
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+/* Button Styling */
+.button-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-export {
+    background: #27ae60;
+    color: white;
+}
+.btn-export:hover {
+    background: #229954;
+}
+
+.btn-clear {
+    background: #e74c3c;
+    color: white;
+}
+.btn-clear:hover {
+    background: #c0392b;
+}
+
+/* Drawing Tool Specific Styles */
+.curve-widget-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.10);
+  padding: 24px;
+  max-width: 900px;
+}
+
+.stage {
+  position: relative;
+  display: inline-block;
+  line-height: 0; /* Prevents extra space under the image */
+}
+
+.stage img, .stage canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+#draw-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.controls {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.controls label {
+    font-weight: bold;
+}
+.controls select {
+    font-size: 16px;
+    padding: 4px 8px;
+}
+
+.curve-widget-wrapper .hint {
+  color: #666;
+  font-size: 14px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.curve-widget-wrapper button {
+  background: #757575;
+  color: #fff;
+}
+.curve-widget-wrapper button:hover {
+  background: #616161;
+}
+#save-btn {
+  background: #2980b9;
+}
+#save-btn:hover {
+  background: #2471a3;
+}
