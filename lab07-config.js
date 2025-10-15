@@ -5,7 +5,7 @@
 
 export const lab07Config = {
   labNumber: 7,
-  labName: "Lab7_Air_Masses_And_Fronts",
+  labName: "Lab07_AirMassesAndFronts",
   totalPoints: 30,
 
   // Multi-Line Canvas Configuration for Surface Analysis (Question 3)
@@ -16,7 +16,7 @@ export const lab07Config = {
     undoLastBtnId: "undo-last-btn-analysis",
     undoAllBtnId: "undo-all-btn-analysis",
     saveBtnId: "save-btn-analysis",
-    saveFilename: "lab7_surface_analysis.png",
+    saveFilename: "Lab07_SurfaceAnalysis.png",
     lineTypes: {
       0: {
         color: "#00FF00", // Green for 1000 mb
