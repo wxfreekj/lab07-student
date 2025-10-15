@@ -46,6 +46,48 @@
         <p>Surface Weather Analysis (30 Points)</p>
       </div>
 
+      <!-- For This Lab Section -->
+      <div class="for-this-lab">
+        <h3>🎯 For This Lab</h3>
+        <p>
+          <strong
+            >You will analyze air masses and fronts using surface weather data.
+            Follow these steps:</strong
+          >
+        </p>
+        <ol>
+          <li>
+            <strong>Study Air Mass Classification:</strong> Learn the naming
+            system and characteristics of different air mass types
+          </li>
+          <li>
+            <strong>Draw Weather Analysis:</strong> Practice drawing isobars and
+            identifying pressure systems on surface maps
+          </li>
+          <li>
+            <strong>Identify Fronts:</strong> Locate and classify different
+            types of frontal boundaries
+          </li>
+          <li>
+            <strong>Analyze Temperature Patterns:</strong> Use temperature data
+            to understand air mass boundaries
+          </li>
+          <li>
+            <strong>Complete All Sections:</strong> Work through air mass
+            identification, isobar analysis, and frontal analysis exercises
+          </li>
+          <li>
+            <strong>Save Your Work:</strong> Your answers auto-save as you type.
+            Download your completed file when finished.
+          </li>
+        </ol>
+        <p>
+          <strong>💡 Tip:</strong> Pay attention to temperature and dew point
+          patterns - they're key indicators of air mass boundaries and frontal
+          locations!
+        </p>
+      </div>
+
       <div class="content">
         <!-- Introduction Section -->
         <div class="section">
@@ -518,18 +560,47 @@
         </div>
 
         <!-- Export Section -->
-        <div class="button-container">
-          <button class="btn-export" onclick="exportAnswers()">
-            📥 Export Answers for Canvas
+        <div
+          class="button-container"
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+          "
+        >
+          <button
+            class="btn-export"
+            onclick="exportAnswers()"
+            style="flex: 1; max-width: 300px"
+          >
+            📥 Download file for Canvas Submission
           </button>
-          <button class="btn-clear" onclick="clearForm()">
+          <button
+            class="btn-clear"
+            onclick="clearForm()"
+            style="flex: 1; max-width: 300px"
+          >
             🗑️ Clear All Answers
           </button>
           <button
             type="button"
             class="help-btn"
             onclick="window.location.href='mailto:JMartinelli@peru.edu?subject=Lab 7 - Question/Feedback&body=Hi Dr. M,%0D%0A%0D%0AI have a question about Lab 7:%0D%0A%0D%0A'"
-            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; font-weight: 600; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px;"
+            style="
+              flex: 1;
+              max-width: 300px;
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: white;
+              padding: 12px 24px;
+              border: none;
+              border-radius: 8px;
+              cursor: pointer;
+              font-size: 1em;
+              font-weight: 600;
+              transition: transform 0.2s, box-shadow 0.2s;
+            "
             onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 16px rgba(102, 126, 234, 0.4)'"
             onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 8px rgba(0, 0, 0, 0.1)'"
           >
