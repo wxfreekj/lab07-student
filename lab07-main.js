@@ -3,11 +3,11 @@
  * Initializes all components for Air Masses and Fronts lab
  */
 
-import { initializeMultiLineCanvas } from "../shared/components/multi-line-canvas.js?v=2";
+import { initializeMultiLineCanvas } from "./shared/components/multi-line-canvas.js?v=3";
 import {
   exportLabAnswers,
   clearLabForm,
-} from "../shared/utils/form-exporter.js";
+} from "./shared/utils/form-exporter.js";
 import { lab07Config } from "./lab07-config.js";
 
 // Initialize all components when DOM is loaded
