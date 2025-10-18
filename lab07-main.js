@@ -3,7 +3,7 @@
  * Initializes all components for Air Masses and Fronts lab
  */
 
-import { initializeMultiLineCanvas } from "../shared/components/multi-line-canvas.js";
+import { initializeMultiLineCanvas } from "../shared/components/multi-line-canvas.js?v=2";
 import {
   exportLabAnswers,
   clearLabForm,
