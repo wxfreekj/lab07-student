@@ -21,19 +21,19 @@ export const lab07Config = {
       0: {
         color: "#00FF00", // Green for 1004 mb
         width: 3,
-        label: "1000",
+        label: "1004",
         dash: [10, 10],
       },
       1: {
         color: "#FF00FF", // Magenta for 1008 mb
         width: 3,
-        label: "1004",
+        label: "1008",
         dash: [10, 10],
       },
       2: {
         color: "#00FFFF", // Cyan for 1012 mb
         width: 3,
-        label: "1008",
+        label: "1012",
         dash: [10, 10],
       },
       3: {
