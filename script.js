@@ -131,17 +131,17 @@ function drawPath(g, points, type) {
     // Legacy string-key handling (if script still uses 'isobar-XXXX' keys)
     if (type === 'isobar-1004') {
         g.strokeStyle = '#00FF00';
-        g.lineWidth = 4;
+        g.lineWidth = 3;
         g.stroke();
         drawIsobarLabel(g, points, type);
     } else if (type === 'isobar-1008') {
         g.strokeStyle = '#FF00FF';
-        g.lineWidth = 4;
+        g.lineWidth = 3;
         g.stroke();
         drawIsobarLabel(g, points, type);
     } else if (type === 'isobar-1012') {
         g.strokeStyle = '#00FFFF';
-        g.lineWidth = 4;
+        g.lineWidth = 3;
         g.stroke();
         drawIsobarLabel(g, points, type);
     } else if (type === 'cold-front') {
@@ -181,10 +181,10 @@ function drawIsobarLabel(g, points, type) {
     const lastPoint = points[points.length - 1];
 
     g.save();
-    g.font = 'bold 16px Arial';
+    g.font = 'bold 12px Arial';
     g.fillStyle = '#000000ff';
     g.strokeStyle = 'white';
-    g.lineWidth = 4;
+    g.lineWidth = 2;
     g.textAlign = 'center';
     g.textBaseline = 'bottom';
 
