@@ -75,9 +75,9 @@ function clearForm() {
 
     // --- STATE VARIABLES ---
     const DOT_RADIUS = 6;
-    let lines = { 'isobar-1000': [], 'isobar-1004': [], 'isobar-1008': [], 'cold-front': [], 'warm-front': [] };
+    let lines = { 'isobar-1004': [], 'isobar-1008': [], 'isobar-1012': [], 'cold-front': [], 'warm-front': [] };
     let currentPoints = [];
-    let currentLineType = 'isobar-1000';
+    let currentLineType = 'isobar-1004';
     let draggingIdx = null;
 
     // --- CORE DRAWING FUNCTIONS ---
