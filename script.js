@@ -181,7 +181,7 @@ function drawIsobarLabel(g, points, type) {
     const lastPoint = points[points.length - 1];
 
     g.save();
-    g.font = 'bold 12px Arial';
+    g.font = '9px Arial';
     g.fillStyle = '#000000ff';
     g.strokeStyle = 'white';
     g.lineWidth = 2;
