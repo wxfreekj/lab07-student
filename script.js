@@ -74,7 +74,7 @@ function clearForm() {
     const ctx = canvas.getContext('2d', { alpha: true });
 
     // --- STATE VARIABLES ---
-    const DOT_RADIUS = 6;
+    const DOT_RADIUS = 3;
     let lines = { 'isobar-1004': [], 'isobar-1008': [], 'isobar-1012': [], 'cold-front': [], 'warm-front': [] };
     let currentPoints = [];
     let currentLineType = 'isobar-1004';
