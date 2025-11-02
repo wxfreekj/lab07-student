@@ -20,21 +20,21 @@ export const lab07Config = {
     lineTypes: {
       0: {
         color: "#00FF00", // Green for 1000 mb
-        width: 4,
+        width: 3,
         label: "1000",
-        dash: [8, 4],
+        dash: [10, 10],
       },
       1: {
         color: "#FF00FF", // Magenta for 1004 mb
-        width: 4,
+        width: 3,
         label: "1004",
-        dash: [8, 4],
+        dash: [10, 10],
       },
       2: {
         color: "#00FFFF", // Cyan for 1008 mb
-        width: 4,
+        width: 3,
         label: "1008",
-        dash: [8, 4],
+        dash: [10, 10],
       },
       3: {
         color: "#0000FF", // Blue for cold front
@@ -52,7 +52,7 @@ export const lab07Config = {
         color: "#FF8C00", // Dark Orange for broken & overcast clouds
         width: 4,
         label: "Clouds",
-        dash: [12, 6], // Dashed line to distinguish from fronts
+        dash: [10, 10], // Dashed line to distinguish from fronts
       },
     },
   },
