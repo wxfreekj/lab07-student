@@ -19,19 +19,19 @@ export const lab07Config = {
     saveFilename: "Lab07_SurfaceAnalysis.png",
     lineTypes: {
       0: {
-        color: "#00FF00", // Green for 1000 mb
+        color: "#00FF00", // Green for 1004 mb
         width: 3,
         label: "1000",
         dash: [10, 10],
       },
       1: {
-        color: "#FF00FF", // Magenta for 1004 mb
+        color: "#FF00FF", // Magenta for 1008 mb
         width: 3,
         label: "1004",
         dash: [10, 10],
       },
       2: {
-        color: "#00FFFF", // Cyan for 1008 mb
+        color: "#00FFFF", // Cyan for 1012 mb
         width: 3,
         label: "1008",
         dash: [10, 10],
