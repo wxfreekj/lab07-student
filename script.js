@@ -111,70 +111,91 @@ function clearForm() {
         drawHandles(ctx, currentPoints);
     }
     
-    function drawPath(g, points, type) {
-        if (points.length < 2) return;
-        
-        g.beginPath();
-        g.moveTo(points[0].x, points[0].y);
-        for (let i = 1; i < points.length - 1; i++) {
-            const xc = (points[i].x + points[i + 1].x) / 2;
-            const yc = (points[i].y + points[i + 1].y) / 2;
-            g.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
-        }
-        g.lineTo(points[points.length - 1].x, points[points.length - 1].y);
+    /* Replace the drawPath and drawIsobarLabel functions in web-components/lab07/script.js with the following updated implementations */
 
-        g.lineCap = 'round';
-        g.lineJoin = 'round';
-
-        if (type=== 'isobar-1000') {
-            g.strokeStyle = '#00FF00';
-            g.lineWidth = 4;
-            g.stroke();
-            drawIsobarLabel(g, points, type);
-        } else if (type === ('isobar-1004')) {
-            g.strokeStyle = '#FF00FF';
-            g.lineWidth = 4;
-            g.stroke();
-            drawIsobarLabel(g, points, type);
-        } else if (type === ('isobar-1008')) {
-            g.strokeStyle = '#00FFFF';
-            g.lineWidth = 4;
-            g.stroke();
-            drawIsobarLabel(g, points, type);
-        } else if (type === 'cold-front') {
-            g.strokeStyle = '#0000FF';
-            g.lineWidth = 3;
-            g.stroke();
-        } else if (type === 'warm-front') {
-            g.strokeStyle = '#FF0000';
-            g.lineWidth = 3;
-            g.stroke();
-        }
+function drawPath(g, points, type) {
+    if (points.length < 2) return;
+    
+    g.beginPath();
+    g.moveTo(points[0].x, points[0].y);
+    for (let i = 1; i < points.length - 1; i++) {
+        const xc = (points[i].x + points[i + 1].x) / 2;
+        const yc = (points[i].y + points[i + 1].y) / 2;
+        g.quadraticCurveTo(points[i].x, points[i].y, xc, yc);
     }
+    g.lineTo(points[points.length - 1].x, points[points.length - 1].y);
 
-    function drawIsobarLabel(g, points, type) {
-        if (points.length < 1) return;
-        const labelText = type.split('-')[1];
+    g.lineCap = 'round';
+    g.lineJoin = 'round';
 
-        const firstPoint = points[0];
-        const lastPoint = points[points.length - 1];
-
-        g.save();
-        g.font = 'bold 16px Arial';
-        g.fillStyle = '#000000ff';
-        g.strokeStyle = 'white';
+    // Legacy string-key handling (if script still uses 'isobar-XXXX' keys)
+    if (type === 'isobar-1004') {
+        g.strokeStyle = '#00FF00';
         g.lineWidth = 4;
-        g.textAlign = 'center';
-        g.textBaseline = 'bottom';
-
-        g.strokeText(labelText, firstPoint.x, firstPoint.y - 10);
-        g.fillText(labelText, firstPoint.x, firstPoint.y - 10);
-
-        g.strokeText(labelText, lastPoint.x, lastPoint.y - 10);
-        g.fillText(labelText, lastPoint.x, lastPoint.y - 10);
-        
-        g.restore();
+        g.stroke();
+        drawIsobarLabel(g, points, type);
+    } else if (type === 'isobar-1008') {
+        g.strokeStyle = '#FF00FF';
+        g.lineWidth = 4;
+        g.stroke();
+        drawIsobarLabel(g, points, type);
+    } else if (type === 'isobar-1012') {
+        g.strokeStyle = '#00FFFF';
+        g.lineWidth = 4;
+        g.stroke();
+        drawIsobarLabel(g, points, type);
+    } else if (type === 'cold-front') {
+        g.strokeStyle = '#0000FF';
+        g.lineWidth = 5;
+        g.stroke();
+    } else if (type === 'warm-front') {
+        g.strokeStyle = '#FF0000';
+        g.lineWidth = 5;
+        g.stroke();
+    } else if (type === 'clouds' || type === 'broken-clouds' || type === 'cloud-region') {
+        g.strokeStyle = '#FF8C00';
+        g.lineWidth = 4;
+        g.stroke();
+    } else {
+        // Numeric keys (0..5) from the shared multi-line config
+        const style = (typeof lineTypes !== 'undefined' && lineTypes[type]) ? lineTypes[type] : null;
+        if (style) {
+            if (style.dash && g.setLineDash) g.setLineDash(style.dash);
+            else if (g.setLineDash) g.setLineDash([]);
+            g.strokeStyle = style.color;
+            g.lineWidth = style.width || 3;
+            g.stroke();
+            if (style.label && typeof drawIsobarLabel === 'function' && /^\d/.test(String(style.label))) {
+                drawIsobarLabel(g, points, `isobar-${style.label}`);
+            }
+            if (g.setLineDash) g.setLineDash([]);
+        }
     }
+}
+
+function drawIsobarLabel(g, points, type) {
+    if (points.length < 1) return;
+    const labelText = (typeof type === 'string' && type.indexOf('isobar-') === 0) ? type.split('-')[1] : String(type);
+
+    const firstPoint = points[0];
+    const lastPoint = points[points.length - 1];
+
+    g.save();
+    g.font = 'bold 16px Arial';
+    g.fillStyle = '#000000ff';
+    g.strokeStyle = 'white';
+    g.lineWidth = 4;
+    g.textAlign = 'center';
+    g.textBaseline = 'bottom';
+
+    g.strokeText(labelText, firstPoint.x, firstPoint.y - 10);
+    g.fillText(labelText, firstPoint.x, firstPoint.y - 10);
+
+    g.strokeText(labelText, lastPoint.x, lastPoint.y - 10);
+    g.fillText(labelText, lastPoint.x, lastPoint.y - 10);
+    
+    g.restore();
+}
     
     function drawHandles(g, points) {
         g.strokeStyle = '#ffffff';
